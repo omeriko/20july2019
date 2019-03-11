@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="he">
+
+    <head>
+        <title>Omer and Osnat</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
+            body * {
+                font-family: arial;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1 style="text-align: center; margin-top: 70px">מהי ההסתברות לתוצאה רצויה בהטלת שתי קוביות</h1>
+        <div style="direction: rtl; text-align: center; margin-top: 70px; xxxborder:1px solid red;min-width:300px height: 50px;line-height: 30px;">			
+            <span style="direction: rtl; display:inline-block; xxborder:1px solid blue; float:right; padding-right:20px">הכנס מספר בין 1-12: </span>
+            <input id="txtInput" style="width:40px; text-align: center; margin: 0 10px; float:right; padding:8px; border-radius:3px"  type="text"/>
+            <button id="btnCalc" style="float: right;  padding: 8px 10px;  border-radius: 8px; background-color: aquamarine; font-size: 12px; font-weight: bold;">חשב הסתברות</button>
+        </div>
+		 <div id="errMessage" style="direction: rtl; text-align: center; margin-top: 70px; min-width:300px ;height: 50px;line-height: 30px; color:red; font-size: 14px;">
+					
+		 </div>
+        <div id="resultContainer" style="direction: rtl; text-align: center; padding-top: 60px; display: none">
+            <span>תוצאה:</span>
+            <span id="lblResult"></span>
+        </div>
+    </body>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function(event) {
+            var btnCalc = document.querySelector("#btnCalc");
+            btnCalc.addEventListener("click", function(){
+                var resultContainer = document.querySelector("#resultContainer");
+				var errMessage = document.querySelector("#errMessage");
+				errMessage.style.display = "none";
+				resultContainer.style.display = "none";
+                /*TODO:
+                1. take input
+				3. check input
+                2. calculate output
+                 */
+
+                var result = 0 ;
+                			
+				
+				// 1. take input
+				var txtInput = document.querySelector("#txtInput");
+				//2. check input
+				if(txtInput.value === ""){
+					errMessage.innerText = "אפילו להכניס מספר לא הצלחת :-)";
+					errMessage.style.display = "block";
+				} else if (txtInput.value.length > 0 ){
+					
+					var tmpValue = txtInput.value.trim();
+					
+					if(isNaN(tmpValue)) {
+						errMessage.innerText = "הקלט שלך לא חוקי";
+						errMessage.style.display = "block";
+					} else if(tmpValue < 1 || tmpValue >12) { 
+						errMessage.innerText = "הערך שהזנת מחוץ לטווח";
+						errMessage.style.display = "block";
+					} else {					
+				
+						//3. if input ok: calculation
+						var n = Number(txtInput.value.trim());
+
+						if(n >= 1 && n <= 6){
+							result = (n+10)/36;
+						} else if(n >= 7 && n <= 12){
+							result = (13-n)/36;
+						}
+
+						result = (result * 100).toFixed(1);
+						var lblResult = document.querySelector("#lblResult");
+						lblResult.innerText = result + '%';
+
+						resultContainer.style.display = "block";
+					}
+				}
+
+            });
+        });
+
+    </script>
+
+</html>

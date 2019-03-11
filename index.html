@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html ng-app="benVsBen">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>נתניהו יעקוף את בן גוריון</title>
+	<link rel="stylesheet" href="style.css?version=55">
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
+	<meta property="og:url"           content="http://20july2019.info/index.html" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="אוטוטו נתניהו עוקף את בן גוריון" />
+    <meta property="og:description"   content="תאריך היסטורי: 20 ליולי 2019. בנימין נתניהו ישבור את השיא של בן גוריון ויהפוך לראש הממשלה בעל הכהונה הארוכה ביותר במדינת ישראל" />
+    <meta property="og:image"         content="http://20july2019.info/images/fb-image.jpg" />
+</head>
+
+<body ng-controller="body as vm" class="main-body">
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1518649518353107',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v3.2'
+    });
+      
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+
+	  var urlParams = new URLSearchParams(window.location.search);
+	  var lang = 'he';
+	  if(urlParams.has('lang') === true){
+		  lang = urlParams.get('lang');
+		  if(lang !== 'en' && lang !== 'he') {
+			  lang = 'he';
+		  }
+	  }
+
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/"+ (lang === "en" ? "en_US": "he_IL") +"/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div class="overlay bg-loading" ng-show="vm.loadingIndicator">
+	<div class="ddl-loading-progress loading-pos"></div>
+</div>
+<div class="body-title">
+    <div class="txt-bigger" ng-style="{ 'direction': vm.lang === 'en'? 'ltr':'rtl'}" ng-bind="::vm.settings.header.title"></div>
+    <span class="txt-smaller" ng-bind="::vm.settings.header.subTitlePrefix"></span>
+    <span ng-bind="vm.days"></span>
+    <span class="txt-smaller" ng-bind="::vm.settings.header.subTitlePostfix"></span>
+</div>
+<div class="portrait-timer-wrapper">	
+	<div class="inner">		
+		<table ng-style="{ 'direction': vm.lang === 'en'? 'ltr':'rtl'}">
+			<tbody>
+			<tr class="top-row">
+				<td ng-bind="vm.secs"></td>
+				<td ng-bind="vm.mins"></td>
+				<td ng-bind="vm.hours"></td>
+				<td class="days" ng-bind="vm.days"></td>
+			</tr>
+			<tr class="bottom-row">
+				<td ng-bind="::vm.settings.stopWatchLabels.seconds"></td>
+				<td ng-bind="::vm.settings.stopWatchLabels.minutes"></td>
+				<td ng-bind="::vm.settings.stopWatchLabels.hours"></td>
+				<td ng-bind="::vm.settings.stopWatchLabels.days"></td>
+			</tr>
+		</tbody>
+		</table>
+	</div>
+	<div class="inner {{ vm.lang }}">
+		<span ng-bind="::vm.settings.inDateLabel"></span>
+		<span ng-bind="::vm.settings.btnWhen"></span>
+	</div>
+	<div class="inner {{ vm.lang }}">
+		<div class="fb-share-button" data-mobile_iframe="true" data-size="large"
+			data-href="http://20july2019.info/index.html"
+			data-layout="button_count"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
+		  </div>
+
+		<!-- <div class="fb-like" data-href="http://20july2019.info" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="false"></div>-->
+	</div>
+</div>
+	<div class="landscape-timer-wrapper">
+		<table>
+			<tbody>
+				<tr>
+					<td ng-bind="vm.days"></td>
+                    <td ng-bind="::vm.settings.stopWatchLabels.days"></td>
+				</tr>
+				<tr>
+					<td ng-bind="vm.hours"></td>
+                    <td ng-bind="::vm.settings.stopWatchLabels.hours"></td>
+				</tr>
+				<tr>
+					<td ng-bind="vm.mins"></td>
+                    <td ng-bind="::vm.settings.stopWatchLabels.minutes"></td>
+				</tr>
+				<tr>
+					<td ng-bind="vm.secs"></td>
+                    <td ng-bind="::vm.settings.stopWatchLabels.seconds"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<span class="landscape-when-btn">
+		<span ng-bind="::vm.settings.inDateLabel"></span>
+		<span ng-bind="::vm.settings.btnWhen"></span>
+	</span>
+	
+	<div class="landscape-share-btn">
+		<div class="fb-share-button" data-mobile_iframe="true" data-size="large"
+				data-href="http://20july2019.info/index.html" 
+				data-layout="button_count"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
+		</div>
+	</div>
+	
+
+	<div class="svg-container" ng-style="{ width  : vm.settings.containerSettings.width  + 'px',
+										   height : vm.settings.containerSettings.height + 'px',
+										   left   : vm.settings.containerSettings.left   + 'px',
+										   top    : vm.settings.containerSettings.top    + 'px' }">
+		<svg class="svg-ele" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+			<defs>
+				<marker id="arrow" 	markerUnits="strokeWidth" markerHeight="12" markerWidth="12"
+						viewBox="0 0 12 12" refX="6" refY="6" orient="auto">
+					<path d="M2,2 L10,6 L2,10 L6,6 L2,2" style="fill: #000"></path>
+				</marker>
+				<linearGradient id="gradientDbg" x1="0" x2="0" y1="0" y2="1">
+					<stop offset="0%" stop-color="#f7cbcb"/>
+					<stop offset="100%" stop-color="#dd191a"/>
+
+				<linearGradient id="gradientBnn" x1="0" x2="0" y1="0" y2="1">
+					<stop offset="0%" stop-color="#7a98e2"/>
+					<stop offset="100%" stop-color="#244390"/>
+			</defs>
+			<!--horizontal axis-->
+			<line ng-attr-x1="{{ vm.settings.diagram.position.x }}"
+				  ng-attr-y1="{{ vm.settings.containerSettings.height - vm.settings.diagram.position.y }}"
+				  ng-attr-x2="{{ vm.settings.diagram.position.x + vm.settings.diagram.dimentions.width }}"
+				  ng-attr-y2="{{ vm.settings.containerSettings.height - vm.settings.diagram.position.y }}"
+				  stroke-width="2"	stroke="black" marker-end="url(#arrow)">
+				<animate attributeType="XML"
+						 attributeName="x2"
+						 from="{{ vm.settings.diagram.position.x }}"
+						 to="{{  vm.settings.diagram.position.x + vm.settings.diagram.dimentions.width }}"
+						 dur="1.5s" repeatCount="1"/>
+			</line>
+
+			<!--vertical axis-->
+			<line ng-attr-x1="{{ vm.settings.diagram.position.x }}"
+				  ng-attr-y1="{{ vm.settings.containerSettings.height - vm.settings.diagram.position.y }}"
+				  ng-attr-x2="{{ vm.settings.diagram.position.x }}"
+				  ng-attr-y2="{{ vm.settings.containerSettings.height - vm.settings.diagram.position.y - vm.settings.diagram.dimentions.height }}"
+				  stroke-width="2"	stroke="black" marker-end="url(#arrow)">
+				<animate attributeType="XML"
+						 attributeName="y2"
+						 from="{{ vm.settings.containerSettings.height - vm.settings.diagram.position.y }}"
+						 to="{{  vm.settings.containerSettings.height - vm.settings.diagram.position.y - vm.settings.diagram.dimentions.height }}"
+						 dur="1.5s" repeatCount="1"/>
+			</line>
+
+			<!--vertical text dbg tick -->
+			<foreignObject ng-attr-x="{{ vm.settings.diagram.axis.vertical.ticks[0].left }}" class="v-axis-info"
+						   ng-attr-y="{{ vm.settings.diagram.axis.vertical.ticks[0].top }}"
+						   ng-attr-width="{{ vm.settings.diagram.axis.vertical.ticks[0].width }}"
+						   ng-attr-height="{{ vm.settings.diagram.axis.vertical.ticks[0].fontSize * 1.5 }}"
+						   ng-style="{ 'font-size': vm.settings.diagram.axis.vertical.ticks[0].fontSize + 'px' }" ng-bind="::vm.settings.diagram.axis.vertical.ticks[0].days">
+			</foreignObject>
+
+			
+			<foreignObject class="v-axis-info"
+				    ng-attr-x="{{ vm.settings.diagram.axis.vertical.ticks[1].left }}"
+				    ng-attr-y="{{ vm.settings.diagram.axis.vertical.ticks[1].top }}"
+				    ng-attr-width="{{ vm.settings.diagram.axis.vertical.ticks[1].width }}"
+					ng-attr-height="{{ vm.settings.diagram.axis.vertical.ticks[1].fontSize * 1.5 }}"
+					ng-style="{ 'font-size': vm.settings.diagram.axis.vertical.ticks[1].fontSize + 'px' }" ng-bind="::vm.settings.diagram.axis.vertical.ticks[1].days">
+			</foreignObject>
+			
+
+			<foreignObject class="v-axis-info"
+					ng-attr-x="{{ vm.settings.diagram.axis.vertical.legend.left }}"
+					ng-attr-y="{{ vm.settings.diagram.axis.vertical.legend.top }}"
+					ng-attr-width="{{ vm.settings.diagram.axis.vertical.legend.width }}"
+					ng-attr-height="{{ vm.settings.diagram.axis.vertical.legend.height }}"
+					ng-style="{ 'font-size': vm.settings.diagram.axis.vertical.legend.fontSize }" 
+					ng-bind="::vm.settings.diagram.axis.vertical.legend.text">
+			</foreignObject>
+
+			<rect ng-repeat     = "bar in vm.settings.diagram.bars.model"
+				  ng-attr-width = "{{ bar.width }}"
+				  ng-attr-height= "{{ bar.height }}"
+				  ng-attr-x     = "{{ bar.left }}"
+				  ng-attr-y     = "{{ bar.top }}"
+				  ng-attr-fill  = "{{ bar.fill }}">
+				<animate attributeType="XML"
+						 attributeName="width"
+						 ng-attr-from=" {{ bar.from }}"
+						 ng-attr-to="{{ bar.width }}"
+						 dur="1.5s" repeatCount="1"/>
+			</rect>
+
+		</svg>
+		
+	</div>
+	<div class="terms-wrapper"><a target=”_blank” href="http://20July2019.info/terms.html" ng-bind="::vm.settings.privacyLink"></a> </div>
+	
+	<div ng-repeat="image in vm.settings.diagram.axis.horizontal.ticks.images"
+	     ng-style="{ 'position': 'absolute',  'z-index': 5,
+					 'left': image.left + 'px', 
+					 'top' : image.top + 'px',
+					 'border-radius': vm.settings.diagram.axis.horizontal.ticks.imageDimentions.width  + 'px'}" 
+		tooltip-placement="{{image.tooltip.position}}"
+		tooltip-class="{{ image.tooltip.class }}"
+		tooltip-is-open="image.tooltip.isOpen"
+		tooltip-popup-delay="{{ image.tooltip.popupDelay }}"
+		tooltip-animation="true"
+		uib-tooltip-template="'dbg-info.html'"
+		tooltip-popup-close-delay="{{100}}">
+		
+		<div ng-style="{ 'width': vm.settings.diagram.axis.horizontal.ticks.imageDimentions.width  + 'px',
+		'height': vm.settings.diagram.axis.horizontal.ticks.imageDimentions.height + 'px',
+		'border-radius': vm.settings.diagram.axis.horizontal.ticks.imageDimentions.width  + 'px'}">
+			
+			<img class="tick-img" 
+				 ng-src="{{ image.url }}"
+				 ng-style="{ 'border-radius': vm.settings.diagram.axis.horizontal.ticks.imageDimentions.width  + 'px' }" />
+		</div>
+		<div class="click-details" ng-bind="::vm.settings.clickForDetails"></div>
+	</div>
+	<script type="text/ng-template" id="dbg-info.html">
+		<div>
+			<div ng-repeat="info in image.tooltip.info" ng-bind-html="::info" ng-class="{'info-bottom-row': $last}" class="info-row {{ vm.lang }}"></div>
+		</div>
+	</script>
+
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
+	<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
+	<!--<script type="text/javascript" src="app.min.js"></script>-->
+	  
+<script type="text/javascript" src="app.module.js?v=126"></script>
+<script type="text/javascript" src="app.service.js?v=126"></script>
+<script type="text/javascript" src="app.controller.js?v=126"></script>
+
+</body>
+</html>

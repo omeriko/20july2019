@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="he">
+
+<head>
+    <title>Omer and Osnat</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+            body * {
+                font-family: arial;
+            }
+        </style>
+</head>
+
+<body>
+<h1 style="text-align: center; margin-top: 70px">מהי ההסתברות לתוצאה רצויה בהטלת שתי קוביות</h1>
+<div style="direction: rtl; text-align: center; margin-top: 70px; xxxborder:1px solid red;min-width:300px height: 50px;line-height: 30px;">
+    <span style="direction: rtl; display:inline-block; xxborder:1px solid blue; float:right; padding-right:20px">הכנס מספר בין 1-12: </span>
+    <input id="txtInput" style="width:40px; text-align: center; margin: 0 10px; float:right; padding:8px; border-radius:3px"  type="text"/>
+    <button id="btnCalc" style="float: right;  padding: 8px 10px;  border-radius: 8px; background-color: aquamarine; font-size: 12px; font-weight: bold;">חשב הסתברות</button>
+</div>
+<div id="errMessage" style="direction: rtl; text-align: center; margin-top: 70px; min-width:300px ;height: 50px;line-height: 30px; color:red; font-size: 14px;">
+
+</div>
+<div id="resultContainer" style="direction: rtl; text-align: center; padding-top: 60px; display: none">
+    <span>תוצאה:</span>
+    <span id="lblResult"></span>
+</div>
+</body>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(event) {
+            a = 1;
+            var b = 2;
+
+            function cFunc(e) {
+              var c = 10;
+              var d = 15;
+
+              console.log(a);
+              console.log(b);
+              console.log(c);
+
+              function dFunc() {
+                var f = 5;
+
+                console.log(a);
+                console.log(b);
+                console.log(c);
+                console.log(d);
+              }
+
+              dFunc();
+            }
+
+            cFunc(10);
+            });
+        /*document.addEventListener("DOMContentLoaded", function(event) {
+
+            a=1;
+            var b=2;
+
+            function A(p1) {
+                 var aA = 11;
+                 var bA = 22;
+                 console.log("A: ", a, b, p1);
+                 B(14);
+
+                 function B(p2){
+                    var aB = 33;
+                    var bB = 44;
+                    console.log("B: ", aA, bA,p2);
+
+                   var C = function(p3){
+                        var aC = 55;
+                        var bC = 66;
+                        console.log("B: ", aA, aB,p3);
+                    };
+                    C(15);
+                }
+            }
+
+            new A(13);
+        });*/
+
+        document.addEventListener("DOMContentLoaded", function(event) {
+
+            a=1;
+            var b=2;
+
+            function A(argA) {
+                 var aA = 11;
+                 var bA = 22;
+                 console.log("A: ", a, b, argA);
+
+                 function B(argB){
+                    var aB = 33;
+                    var bB = 44;
+
+                    console.log("B: ", aA, bA, argB);
+
+                    var C = function(argC){
+                        var aC = 55;
+                        var bC = 66;
+
+                        console.log("C: ", aA, aB, argC);
+                    };
+
+                    C(4);
+                  }
+
+                B(3);
+            }
+
+
+            new A(2);
+        });
+
+
+
+
+
+
+    </script>
+
+</html>
